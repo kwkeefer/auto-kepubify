@@ -14,7 +14,7 @@ Replace `SOURCE_DIRECTORY` with an absolute path to the directory where .epub fi
 
 Replace `SYNC_DIRECTORY` with a directory that the kepub files will be copied to.  Files in this directory will be synced to Dropbox and then deleted.
 
-`REMOTE_DIRECTORY` is the directory that files will be copied to in the rclone remote (eg Dropbox).
+`REMOTE_DIRECTORY` is the directory that files will be copied to in the rclone remote (eg Dropbox).  This should be `"Apps/Rakuten Kobo"` for Dropbox and `"Rakuten Kobo"` for Google Drive.
 
 ## rclone setup
 
@@ -24,15 +24,17 @@ You can either create a config file by installing rclone and running `rclone con
 
 Build and run the container (assumes you are running L)
 ```
-docker build -t rclone rclone/rclone-auth.Dockerfile
-docker run -v $PWD/rclone/config:/config:z -p 53682:53682 -ti --entrypoint bash rclone-auth
+source .env
+docker build -t rclone-auth -f rclone/rclone-auth.Dockerfile .
+docker run -v $PWD/rclone/config:/config:z --user $USER_ID:$GROUP_ID -p 53682:53682 -ti --entrypoint bash rclone-auth
 ```
 
 Inside the container, run `rclone config` and select the following:
 ```
+# dropbox
 new remote
 name: remote
-storage: dropbox (might work with others, I haven't tested)
+storage: dropbox
 empty client_id
 empty client_secret
 no advanced config
@@ -40,9 +42,25 @@ yes web browser
 click on the link or paste into your browser
 keep the new dropbox remote
 quit the config
+
+
+# google drive
+new remote
+name: remote
+storage: drive
+empty client_id
+empty_client secret
+scope 1
+empty service account file
+no advanced config
+click on the link or paste into your browser
+no shared drive
+keep the new dropbox remote
+quit the config
 ```
 
-While still inside the config, copy the file to your host:
+While still inside the container, copy the file to your host:
+
 ```
 cp ~/.config/rclone/rclone.conf /config/
 ```
@@ -50,6 +68,7 @@ cp ~/.config/rclone/rclone.conf /config/
 ## Run the services
 
 ```
+docker compose build
 docker compose up 
 ```
 
