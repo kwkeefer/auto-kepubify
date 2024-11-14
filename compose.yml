@@ -4,13 +4,13 @@ services:
     build:
       context: ./kepubify
       dockerfile: Dockerfile
-    user: $UID:$GID
+    user: $USER_ID:$GROUP_ID
     volumes:
       - $SOURCE_DIRECTORY:/input:z
       - $SYNC_DIRECTORY:/output:z
   rclone:
     image: rclone
-    user: $UID:$GID
+    user: $USER_ID:$GROUP_ID
     build:
       context: ./rclone
       dockerfile: rclone.Dockerfile
