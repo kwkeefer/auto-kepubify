@@ -20,9 +20,9 @@ Replace `SYNC_DIRECTORY` with a directory that the kepub files will be copied to
 
 ### Generate the rclone config file
 
-You can either create a config file by installing rclone and running `rclone config`.  The instrucions below do it via Docker to avoid installing rclone. 
+You can create a config file by installing rclone and running `rclone config`.  The instructions below do it via Docker to avoid having to install rclone locally. 
 
-Build and run the container (assumes you are running L)
+Build and run the container (assumes you are running Linux).
 ```
 source .env
 docker build -t rclone-auth -f rclone/rclone-auth.Dockerfile .
