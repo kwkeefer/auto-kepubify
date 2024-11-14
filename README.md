@@ -8,7 +8,7 @@ Copy `example.env` to `.env`
 
 Replace `USER_ID` and `GROUP_ID` with values that can read/write to your SOURCE_DIRECTORY and SYNC_DIRECTORY.
 
-`COPY_ALL` can be set to `true` to copy all files to the remote source.  Note that folder structures will NOT be copied, so there is a chance of name collisions.
+`COPY_ALL` can be set to `true` to copy all files to the remote source. 
 
 Replace `SOURCE_DIRECTORY` with an absolute path to the directory where .epub files will be saved to.
 
