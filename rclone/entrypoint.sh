@@ -22,7 +22,7 @@ while read path action file; do
     # Remove the file after it has been copied
     rm "$path$file"
     # remove empty directories
-    find $INPUT_DIR -type d -empty -delete
-    
+    find "$INPUT_DIR" -mindepth 1 -type d -empty -delete
+
     echo "Processed and removed: $path$file"
 done
