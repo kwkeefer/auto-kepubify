@@ -4,7 +4,9 @@ services:
     build:
       context: ./kepubify
       dockerfile: Dockerfile
-    user: $USER_ID:$GROUP_ID
+    user: $USER_ID:$GROUP_ID 
+    environment:
+    - COPY_ALL=$COPY_ALL
     volumes:
       - $SOURCE_DIRECTORY:/input:z
       - $SYNC_DIRECTORY:/output:z
