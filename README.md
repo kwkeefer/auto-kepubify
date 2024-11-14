@@ -40,7 +40,7 @@ empty client_secret
 no advanced config
 yes web browser
 click on the link or paste into your browser
-keep the new dropbox remote
+keep the new remote
 quit the config
 
 
@@ -55,7 +55,7 @@ empty service account file
 no advanced config
 click on the link or paste into your browser
 no shared drive
-keep the new dropbox remote
+keep the new remote
 quit the config
 ```
 
