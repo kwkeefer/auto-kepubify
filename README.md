@@ -43,6 +43,7 @@ click on the link or paste into your browser
 keep the new dropbox remote
 quit the config
 
+
 # google drive
 new remote
 name: remote
@@ -59,6 +60,7 @@ quit the config
 ```
 
 While still inside the container, copy the file to your host:
+
 ```
 cp ~/.config/rclone/rclone.conf /config/
 ```
